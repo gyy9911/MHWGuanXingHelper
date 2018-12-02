@@ -12,13 +12,13 @@ class Jewel{
     
     var ename:String
     var cname:String
-    var slot:Int8
-    var rare:Int8
-    var id:Int8?
+    var slot:Int
+    var rare:Int
+    var id:Int
     var image:UIImage?
     
     //init
-    init(id:Int8, ename:String,cname:String,slot:Int8, rare:Int8, image:UIImage?) {
+    init(id:Int, ename:String,cname:String,slot:Int, rare:Int, image:UIImage?) {
         self.id=id
         self.ename=ename
         self.cname=cname

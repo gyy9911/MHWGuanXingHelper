@@ -18,6 +18,10 @@ class ListJewelCell: UITableViewCell {
     @IBOutlet weak var Image3: UIImageView!
     @IBOutlet weak var Name3: UILabel!
     
+    var Jewel1:Jewel?
+    var Jewel2:Jewel?
+    var Jewel3:Jewel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

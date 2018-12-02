@@ -10,11 +10,12 @@ import UIKit
 
 class ChooseJewelCell: UITableViewCell {
 
-    @IBOutlet weak var ChoiceR5: UIButton!
-    @IBOutlet weak var ChoiceR6: UIButton!
-    @IBOutlet weak var ChoiceR7: UIButton!
-    @IBOutlet weak var ChoiceR8: UIButton!
+    @IBOutlet weak var ChoiceLableR5: UILabel!
+    @IBOutlet weak var ChoiceLableR6: UILabel!
+    @IBOutlet weak var ChoiceLableR7: UILabel!
+    @IBOutlet weak var ChoiceLableR8: UILabel!
     
+    var Jewelid=(-1)//保存该cell对应的珠子的id
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +27,5 @@ class ChooseJewelCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }
