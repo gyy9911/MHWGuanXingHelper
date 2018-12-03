@@ -37,11 +37,10 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         //设置tabbaritem字体
         for baritem in (tabBarController?.tabBar.items)!{
             baritem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)], for: UIControl.State.normal)
-            
         }
         
         
-        print("view load")
+      //  print("view load")
         
         if(!isDataLoaded){
             InitJewelData()
@@ -135,7 +134,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
             fatalError("can't get cell")
         }
         
-        print("选中了第\(indexPath.row)个cell id=\(cell.Jewelid)")
+       // print("选中了第\(indexPath.row)个cell id=\(cell.Jewelid)")
         
         switch tabBarItem.tag {
         case 1:
@@ -143,16 +142,21 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
             tabBarItem.title=Jewel1?.cname
             tabBarItem.image=JewelImages[(Jewel1?.slot)!-1]
             tabBarItem.selectedImage=JewelImages[(Jewel1?.slot)!-1]
+            SelectedJewelId1=(Jewel1?.id)!
+            
+    
         case 2:
             Jewel2=JewelData[cell.Jewelid]
             tabBarItem.title=Jewel2?.cname
             tabBarItem.image=JewelImages[(Jewel2?.slot)!-1]
             tabBarItem.selectedImage=JewelImages[(Jewel2?.slot)!-1]
+            SelectedJewelId2=(Jewel2?.id)!
         case 3:
             Jewel3=JewelData[cell.Jewelid]
             tabBarItem.title=Jewel3?.cname
             tabBarItem.image=JewelImages[(Jewel3?.slot)!-1]
             tabBarItem.selectedImage=JewelImages[(Jewel3?.slot)!-1]
+            SelectedJewelId3=(Jewel3?.id)!
         default:
             fatalError("wrong tag number")
         }
@@ -170,6 +174,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 case 6:JewelsS1R6.append(eachJewel)
                 case 7:JewelsS1R7.append(eachJewel)
                 case 8:JewelsS1R8.append(eachJewel)
+                case 0:break
                 default:
                     fatalError("wrong rare number")
                 }
@@ -180,6 +185,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 case 6:JewelsS2R6.append(eachJewel)
                 case 7:JewelsS2R7.append(eachJewel)
                 case 8:JewelsS2R8.append(eachJewel)
+                case 0:break
                 default:
                     fatalError("wrong rare number")
                 }
@@ -190,6 +196,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
                 case 6:JewelsS3R6.append(eachJewel)
                 case 7:JewelsS3R7.append(eachJewel)
                 case 8:JewelsS3R8.append(eachJewel)
+                case 0:break
                 default:
                     fatalError("wrong rare number")
                 }

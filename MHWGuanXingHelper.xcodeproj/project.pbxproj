@@ -10,6 +10,7 @@
 		B31D845021B12F2E00080EE7 /* JewelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D844F21B12F2E00080EE7 /* JewelData.swift */; };
 		B31D845221B14F4000080EE7 /* ListJewelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D845121B14F4000080EE7 /* ListJewelCell.swift */; };
 		B31D845421B1620200080EE7 /* ChooseJewelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31D845321B1620200080EE7 /* ChooseJewelCell.swift */; };
+		B328799321B55F9800B1A0FF /* TabViewCotroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B328799221B55F9800B1A0FF /* TabViewCotroller.swift */; };
 		B33ADCFF21B023080004F55D /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33ADCFE21B023080004F55D /* ChooseViewController.swift */; };
 		B33ADD0121B0260C0004F55D /* Jewel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33ADD0021B0260C0004F55D /* Jewel.swift */; };
 		B37C0AC921AEC4CE000AC9A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C0AC821AEC4CE000AC9A3 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		B31D844F21B12F2E00080EE7 /* JewelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewelData.swift; sourceTree = "<group>"; };
 		B31D845121B14F4000080EE7 /* ListJewelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListJewelCell.swift; sourceTree = "<group>"; };
 		B31D845321B1620200080EE7 /* ChooseJewelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseJewelCell.swift; sourceTree = "<group>"; };
+		B328799221B55F9800B1A0FF /* TabViewCotroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewCotroller.swift; sourceTree = "<group>"; };
 		B33ADCFE21B023080004F55D /* ChooseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
 		B33ADD0021B0260C0004F55D /* Jewel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jewel.swift; sourceTree = "<group>"; };
 		B37C0AC521AEC4CE000AC9A3 /* MHWGuanXingHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHWGuanXingHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				B37C0AD421AEC4D5000AC9A3 /* Info.plist */,
 				B33ADD0021B0260C0004F55D /* Jewel.swift */,
 				B31D844F21B12F2E00080EE7 /* JewelData.swift */,
+				B328799221B55F9800B1A0FF /* TabViewCotroller.swift */,
 			);
 			path = MHWGuanXingHelper;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				B31D845421B1620200080EE7 /* ChooseJewelCell.swift in Sources */,
 				B31D845021B12F2E00080EE7 /* JewelData.swift in Sources */,
 				B33ADCFF21B023080004F55D /* ChooseViewController.swift in Sources */,
+				B328799321B55F9800B1A0FF /* TabViewCotroller.swift in Sources */,
 				B31D845221B14F4000080EE7 /* ListJewelCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
