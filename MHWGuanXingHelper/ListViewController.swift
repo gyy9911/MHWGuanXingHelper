@@ -94,6 +94,34 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         
     }
-    
+    // 设置 cell 是否允许左滑
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    // 设置默认的左滑按钮的title
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "按钮钮钮"
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let cellActionA = UITableViewRowAction(style: .default, title: "按钮-1", handler: {_,_ in
+            print("点击了 按钮-1")
+        })
+        cellActionA.backgroundColor = UIColor.green
+        
+        let cellActionB = UITableViewRowAction(style: .default, title: "按钮-2", handler: {_,_ in
+            print("点击了 按钮-2")
+        })
+        return [cellActionA, cellActionB]
+    }
+
+    // 点击左滑出现的按钮时触发
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("点击左滑出现的按钮时触发")
+        return
+    }
+    // 左滑结束时调用(只对默认的左滑按钮有效，自定义按钮时这个方法无效)
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+    }
+
 }
 
