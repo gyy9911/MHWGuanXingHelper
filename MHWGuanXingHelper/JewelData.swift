@@ -111,7 +111,7 @@ var JewelData:[Jewel]=[
     Jewel(id:97,ename:"Draw",cname:"拔刀",slot:2,rare:8,image:nil),
 ]
 
-var emptyJewel1=Jewel(id: -1, ename: "empty", cname: "----", slot: 1, rare: 0, image: nil)
+var emptyJewel=Jewel(id: -1, ename: "empty", cname: "一一", slot: 0, rare: 0, image: nil)
 var emptyJewel2=Jewel(id: -2, ename: "empty", cname: "----", slot: 2, rare: 0, image: nil)
 var emptyJewel3=Jewel(id: -3, ename: "empty", cname: "----", slot: 3, rare: 0, image: nil)
 
@@ -135,3 +135,8 @@ var isDataLoaded=false //防止数据重复加载
 var SelectedJewelId1 = (-1)
 var SelectedJewelId2 = (-1)
 var SelectedJewelId3 = (-1)
+
+enum ProcessType{case first1,second1,third2}
+var CurProcess:ProcessType?
+var CurLine:Int?
+var ForeLine:Int?

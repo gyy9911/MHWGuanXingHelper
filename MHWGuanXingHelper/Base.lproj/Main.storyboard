@@ -22,21 +22,21 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-lg-2h4">
-                                        <rect key="frame" x="0.0" y="0.0" width="319" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="647"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListJewelCell" rowHeight="50" id="OPu-Ox-mFX" customClass="ListJewelCell" customModule="MHWGuanXingHelper" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="319" height="50"/>
+                                                <rect key="frame" x="0.0" y="28" width="303" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OPu-Ox-mFX" id="acm-qs-vuE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="303" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UWA-yv-EAf">
-                                                            <rect key="frame" x="38" y="0.0" width="281" height="49.5"/>
+                                                            <rect key="frame" x="42" y="0.0" width="261" height="49.5"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="TopLeft" distribution="fillEqually" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="xGT-AQ-NoL">
-                                                                    <rect key="frame" x="0.0" y="10" width="281" height="30"/>
+                                                                <stackView opaque="NO" contentMode="TopLeft" distribution="fillEqually" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="xGT-AQ-NoL">
+                                                                    <rect key="frame" x="0.0" y="10" width="261" height="30"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="dNa-0l-dqk">
                                                                             <rect key="frame" x="0.0" y="0.0" width="73" height="30"/>
@@ -57,7 +57,7 @@
                                                                             </subviews>
                                                                         </stackView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFv-p2-kaI">
-                                                                            <rect key="frame" x="104" y="0.0" width="73" height="30"/>
+                                                                            <rect key="frame" x="94" y="0.0" width="73" height="30"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fzh-1Q-NbF">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -75,7 +75,7 @@
                                                                             </subviews>
                                                                         </stackView>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEA-aQ-gIi">
-                                                                            <rect key="frame" x="208" y="0.0" width="73" height="30"/>
+                                                                            <rect key="frame" x="188" y="0.0" width="73" height="30"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dqp-YL-Ine">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -114,38 +114,79 @@
                                                     <outlet property="Name2" destination="fa3-SQ-gfl" id="zLK-w9-lwH"/>
                                                     <outlet property="Name3" destination="B88-XR-Ab3" id="MAm-aP-yXq"/>
                                                     <outlet property="ProgressImage" destination="buS-Bf-6CL" id="WaE-fi-wIT"/>
+                                                    <segue destination="fso-0P-ZT2" kind="show" identifier="edit" id="Rrk-uT-WsD"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="1AY-DO-deG">
-                                        <rect key="frame" x="329" y="0.0" width="46" height="647"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="1AY-DO-deG">
+                                        <rect key="frame" x="313" y="0.0" width="62" height="647"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zm6-Sq-Lwz">
-                                                <rect key="frame" x="0.0" y="0.0" width="46" height="89.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="62" height="46"/>
                                                 <state key="normal" title="添加"/>
                                                 <connections>
                                                     <action selector="AddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vw6-z8-iA8"/>
-                                                    <segue destination="fso-0P-ZT2" kind="show" id="qrR-yf-jFI"/>
+                                                    <segue destination="fso-0P-ZT2" kind="show" identifier="add" id="qrR-yf-jFI"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-9k-4z6">
-                                                <rect key="frame" x="0.0" y="139.5" width="46" height="89.5"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-u4-kl0">
-                                                <rect key="frame" x="0.0" y="279" width="46" height="89"/>
-                                                <state key="normal" title="Button"/>
-                                                <connections>
-                                                    <action selector="showList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRr-l4-NEs"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGo-iw-aYc">
-                                                <rect key="frame" x="0.0" y="418" width="46" height="89.5"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-wA-Dzf">
-                                                <rect key="frame" x="0.0" y="557.5" width="46" height="89.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-Eb-GIi">
+                                                <rect key="frame" x="13.5" y="96" width="35" height="185"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="av9-R1-uha">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="46.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-u4-kl0">
+                                                        <rect key="frame" x="0.0" y="46.5" width="35" height="46"/>
+                                                        <state key="normal" title="1"/>
+                                                        <connections>
+                                                            <action selector="ProcessBut1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtc-aM-Lk7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-9k-4z6">
+                                                        <rect key="frame" x="0.0" y="92.5" width="35" height="46.5"/>
+                                                        <state key="normal" title="1"/>
+                                                        <connections>
+                                                            <action selector="ProcessBut2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8g-cY-2ph"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGo-iw-aYc">
+                                                        <rect key="frame" x="0.0" y="139" width="35" height="46"/>
+                                                        <state key="normal" title="2"/>
+                                                        <connections>
+                                                            <action selector="ProcessBut3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="og8-iC-oEp"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RhQ-63-uGj">
+                                                <rect key="frame" x="0.0" y="331" width="62" height="138.5"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n62-eW-7gj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="46.5"/>
+                                                        <state key="normal" title="撤销"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-wA-Dzf">
+                                                        <rect key="frame" x="0.0" y="46.5" width="62" height="46"/>
+                                                        <state key="normal" title="炼金推进"/>
+                                                        <connections>
+                                                            <action selector="AlchemyBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gof-PJ-yVi"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqv-vx-auz">
+                                                        <rect key="frame" x="0.0" y="92.5" width="62" height="46"/>
+                                                        <state key="normal" title="任务推进"/>
+                                                        <connections>
+                                                            <action selector="MissionBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QND-vJ-ceJ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7q-ei-FrJ">
+                                                <rect key="frame" x="8" y="519.5" width="46" height="127.5"/>
                                                 <state key="normal" title="Button"/>
                                             </button>
                                         </subviews>
@@ -177,19 +218,26 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GHm-bc-BpB"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ProBut1" destination="Fob-u4-kl0" id="ojo-Hr-jR9"/>
+                        <outlet property="ProBut2" destination="gPU-9k-4z6" id="0aj-VH-sga"/>
+                        <outlet property="ProBut3" destination="rGo-iw-aYc" id="gA7-Gk-u3g"/>
                         <outlet property="tableView" destination="M6l-lg-2h4" id="Wma-GO-4Gu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="-642"/>
+            <point key="canvasLocation" x="1109.5999999999999" y="-692.20389805097454"/>
         </scene>
         <!--Tab View Cotroller-->
         <scene sceneID="bs6-P9-i1R">
             <objects>
                 <tabBarController id="e62-QH-JsP" customClass="TabViewCotroller" customModule="MHWGuanXingHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="82D-PV-7yh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OJY-AT-fiv"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OJY-AT-fiv">
+                            <connections>
+                                <action selector="cancel:" destination="e62-QH-JsP" id="g2J-MM-4gC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="iua-PT-9Tn">
                             <connections>
                                 <segue destination="1UE-Ta-hUc" kind="unwind" unwindAction="unwindToListWithSender:" id="Teu-2l-IPg"/>
@@ -227,7 +275,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WrB-rQ-QNE">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb2-OY-sJf" userLabel="JewelButton1">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb2-OY-sJf" userLabel="JewelButton1">
                                                 <rect key="frame" x="0.0" y="0.0" width="118.5" height="50"/>
                                                 <state key="normal" title="1级孔"/>
                                                 <connections>
@@ -424,7 +472,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0MC-ce-BFA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="--" id="cMJ-ic-Obf" userLabel="Jewel1"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="----" id="cMJ-ic-Obf" userLabel="Jewel1"/>
                     <navigationItem key="navigationItem" id="TTY-sP-oZu">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="5uN-uH-Wkf"/>
                         <rightBarButtonItems>
@@ -434,6 +482,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="J1S1But" destination="Lb2-OY-sJf" id="XFP-Nq-fUw"/>
                         <outlet property="tableViewR5" destination="yaN-gn-lgh" id="9RN-72-g8Y"/>
                         <outlet property="tableViewR6" destination="3bG-hA-BKL" id="TuI-QM-Icw"/>
                         <outlet property="tableViewR7" destination="dk4-qj-rWp" id="NgN-41-wJ6"/>
@@ -442,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivN-a8-XQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1837.5999999999999" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1814" y="130"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8T9-jB-8ra">
@@ -476,7 +525,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xz0-zV-uYe">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIP-Va-ef9" userLabel="JewelButton1">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIP-Va-ef9" userLabel="JewelButton1">
                                                 <rect key="frame" x="0.0" y="0.0" width="118.5" height="50"/>
                                                 <state key="normal" title="1级孔"/>
                                                 <connections>
@@ -676,7 +725,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pmG-tu-srl"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="2" title="--" id="kdD-C3-iMc" userLabel="Jewel2"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="----" id="kdD-C3-iMc" userLabel="Jewel2"/>
                     <navigationItem key="navigationItem" id="Sja-G2-UvC">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rAL-KQ-5gn"/>
                         <rightBarButtonItems>
@@ -686,6 +735,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="J2S1But" destination="uIP-Va-ef9" id="DUN-CO-IYp"/>
                         <outlet property="tableViewR5" destination="pca-WB-ZFs" id="Ap6-yp-Y6L"/>
                         <outlet property="tableViewR6" destination="Ukw-Ki-Rzh" id="lag-IC-NLN"/>
                         <outlet property="tableViewR7" destination="YOV-94-UIy" id="WP3-n9-xlw"/>
@@ -710,7 +760,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PQ4-rS-BGn">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaQ-Jh-IBu" userLabel="JewelButton1">
+                                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaQ-Jh-IBu" userLabel="JewelButton1">
                                                 <rect key="frame" x="0.0" y="0.0" width="118.5" height="50"/>
                                                 <state key="normal" title="1级孔"/>
                                                 <connections>
@@ -910,7 +960,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pfn-BL-Gcn"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="--" id="Wze-wT-Jel" userLabel="Jewel3"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="----" id="Wze-wT-Jel" userLabel="Jewel3"/>
                     <navigationItem key="navigationItem" id="Cvb-Dk-8xk">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="28r-iK-Zwr"/>
                         <rightBarButtonItems>
@@ -920,6 +970,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="J3S1But" destination="iaQ-Jh-IBu" id="Noh-Cz-dGb"/>
                         <outlet property="tableViewR5" destination="3bY-a0-C2a" id="lgQ-ja-Crn"/>
                         <outlet property="tableViewR6" destination="YL6-WL-sRK" id="GgA-e5-ymA"/>
                         <outlet property="tableViewR7" destination="tl2-z4-SeZ" id="5mY-ni-2ue"/>
@@ -931,4 +982,7 @@
             <point key="canvasLocation" x="3242" y="130"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Rrk-uT-WsD"/>
+    </inferredMetricsTieBreakers>
 </document>

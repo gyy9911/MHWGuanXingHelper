@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import os.log
 
 class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     var List=[ListLine]()
     @IBAction func AddButton(_ sender: Any) {
+        //添加新项时清空之前已选条目
         SelectedJewelId1 = -1
         SelectedJewelId2 = -1
         SelectedJewelId3 = -1
     }
-    var JewelImages:[UIImage]=[UIImage(named: "S1Img")!,
-                               UIImage(named: "S2Img")!,
-                               UIImage(named: "S3Img")!
+    var JewelImages:[UIImage]=[UIImage(named: "ImgS1")!,
+                               UIImage(named: "ImgS2")!,
+                               UIImage(named: "ImgS3")!
     ]
     
     override func viewDidLoad() {
@@ -30,21 +32,7 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         tableView.delegate = self//设置表格视图的代理为当前的视图控制器类
         tableView.dataSource = self//设置表格视图的数据源为当前的视图控制器类
     }
-    
-    @IBAction func showList(_ sender: UIButton) {
-        
-            print(List[0].Jewel1.cname)
-    }
-    private func loadSampleData(){
-        let Jewelid1 = 0;
-        let Jewelid2 = 0;
-        let Jewelid3 = 2;
-        let Jewel1=JewelData[Jewelid1]
-        let Jewel2=JewelData[Jewelid2]
-        let Jewel3=JewelData[Jewelid3]
-        List.append(ListLine(Jewel1: Jewel1, Jewel2: Jewel2, Jewel3: Jewel3))
-        
-    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -61,67 +49,202 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
 
         let Line = List[indexPath.row]
         cell.Name1.text = Line.Jewel1.cname
-        if(Line.Jewel1.id>=0){cell.Image1.image=JewelImages[Line.Jewel1.slot-1]}
+        cell.Image1.image=UIImage(named:"ImgS\(Line.Jewel1.slot)")
         cell.Name2.text = Line.Jewel2.cname
-        if(Line.Jewel2.id>=0){cell.Image2.image=JewelImages[Line.Jewel2.slot-1]}
+        cell.Image2.image=UIImage(named:"ImgS\(Line.Jewel2.slot)")
         cell.Name3.text = Line.Jewel3.cname
-        if(Line.Jewel3.id>=0){cell.Image3.image=JewelImages[Line.Jewel3.slot-1]}
-        
+        cell.Image3.image=UIImage(named:"ImgS\(Line.Jewel3.slot)")
+        switch Line.Status
+        {
+        case .done:
+            cell.ProgressImage.image=UIImage(named:"ProDone")
+        case .skip:
+            cell.ProgressImage.image=UIImage(named: "ProSkip")
+        case .cur:
+            cell.ProgressImage.image=UIImage(named: "ProCur")
+        case .not:
+            cell.ProgressImage.image=UIImage(named: "ProNot")
+        case .next:
+            cell.ProgressImage.image=UIImage(named: "ProNext")
+        }
         return cell
     }
-    @IBAction func unwindToList(sender:UIStoryboardSegue){
-        if sender.source is TabViewCotroller{
-            print("unwind succed")
-            // Add a new meal.
-            let newIndexPath = IndexPath(row: List.count, section: 0)
-            var newJewel1:Jewel
-            var newJewel2:Jewel
-            var newJewel3:Jewel
+    
+    @IBAction func unwindToList(sender:UIStoryboardSegue)
+    {
+        if sender.source is TabViewCotroller
+        {
             
-            if(SelectedJewelId1<0){newJewel1=emptyJewel1}else{
-                newJewel1=JewelData[SelectedJewelId1]
-            }
-            if(SelectedJewelId2<0){newJewel2=emptyJewel1}else{
-                newJewel2=JewelData[SelectedJewelId2]
-            }
-            if(SelectedJewelId3<0){newJewel3=emptyJewel1}else{
-                newJewel3=JewelData[SelectedJewelId3]
-            }
+            let newJewel1=SelectedJewelId1<0 ? emptyJewel:JewelData[SelectedJewelId1]
+            let newJewel2=SelectedJewelId2<0 ? emptyJewel:JewelData[SelectedJewelId2]
+            let newJewel3=SelectedJewelId3<0 ? emptyJewel:JewelData[SelectedJewelId3]
             let newLine=ListLine(Jewel1: newJewel1, Jewel2: newJewel2, Jewel3: newJewel3)
-            List.append(newLine)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            
+            if let selectedIndexPath=tableView.indexPathForSelectedRow
+            {
+            //edit a line
+                List[selectedIndexPath.row]=newLine
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            }
+            else
+            {
+                // Add a new line.
+                let newIndexPath = IndexPath(row: List.count, section: 0)
+                if(newIndexPath.row==0)
+                {//如果添加的是第一行，那这一行即为初始当前行
+                    newLine.Status = .cur
+                    CurLine=0
+                }
+                List.append(newLine)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
         }
-        
-        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        super.prepare(for: segue, sender: sender)
+        print(segue.identifier ?? "wrong")
+        switch segue.identifier
+        {
+        case "add":
+            os_log("add new",log:OSLog.default,type:.debug)
+        case "edit":
+            os_log("show edit",log:OSLog.default,type:.debug)
+            guard let selectedCell=sender as? ListJewelCell
+                else{fatalError("unexpected sender \(String(describing: sender))")}
+            guard let indexPath=tableView.indexPath(for: selectedCell)
+                else{fatalError("wrong indexPath")}
+            let jewelLineData=List[indexPath.row]
+            SelectedJewelId1=jewelLineData.Jewel1.id
+            SelectedJewelId2=jewelLineData.Jewel2.id
+            SelectedJewelId3=jewelLineData.Jewel3.id
+            
+        default:
+            fatalError("unexpected identifier")
+        }
+
+    }
+
     // 设置 cell 是否允许左滑
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
         return true
     }
-    // 设置默认的左滑按钮的title
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "按钮钮钮"
-    }
+    // 自定义左滑cell时的按钮和触发方法
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let cellActionA = UITableViewRowAction(style: .default, title: "按钮-1", handler: {_,_ in
-            print("点击了 按钮-1")
+        let cellActionA = UITableViewRowAction(style: .default, title: "删除", handler:
+        {_,_ in
+            print("点击了删除")
         })
-        cellActionA.backgroundColor = UIColor.green
+        cellActionA.backgroundColor = UIColor.red
         
-        let cellActionB = UITableViewRowAction(style: .default, title: "按钮-2", handler: {_,_ in
-            print("点击了 按钮-2")
+        let cellActionB = UITableViewRowAction(style: .default, title: "高亮", handler:
+        {_,_ in
+            tableView.cellForRow(at: indexPath)?.backgroundColor=UIColor.yellow
+            print("点击了高亮at line \(indexPath.row)")
         })
-        return [cellActionA, cellActionB]
+        cellActionB.backgroundColor = UIColor.green
+        return [cellActionB, cellActionA]
     }
-
-    // 点击左滑出现的按钮时触发
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("点击左滑出现的按钮时触发")
-        return
+    
+    @IBAction func AlchemyBut(_ sender: Any)
+    {
+        if(CurLine! != List.count-1)//当前行不是最后一行时
+        {
+            List[CurLine!].Status = .done
+            ForeLine=CurLine
+            CurLine=CurLine!+1
+            List[CurLine!].Status = .cur
+            tableView.reloadData()
+        }
+        
     }
-    // 左滑结束时调用(只对默认的左滑按钮有效，自定义按钮时这个方法无效)
-    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+    @IBAction func MissionBut(_ sender: Any)
+    {
+        if(CurProcess != nil)
+        {
+            switch CurProcess!
+            {
+            case .first1:
+                if(CurLine! != self.List.count-1)//当前行不是最后一行时
+                {
+                    self.List[CurLine!].Status = .skip
+                    ForeLine=CurLine
+                    CurLine=CurLine!+1
+                    self.List[CurLine!].Status = .cur
+                    self.tableView.reloadData()
+                    proButSelected(sender: ProBut2)//切换到进度状态2
+                    CurProcess = .second1
+                }
+            case .second1:
+                if(CurLine! != self.List.count-1)
+                {
+                    self.List[CurLine!].Status = .skip
+                    ForeLine=CurLine
+                    CurLine=CurLine!+1
+                    self.List[CurLine!].Status = .cur
+                    self.tableView.reloadData()
+                    proButSelected(sender: ProBut3)//切换到进度状态3
+                    CurProcess = .third2
+                }
+            case .third2:
+                if(CurLine! < self.List.count-2)
+                {
+                    self.List[CurLine!].Status = .skip
+                    self.List[CurLine!+1].Status = .skip
+                    ForeLine=CurLine
+                    CurLine=CurLine!+2
+                    self.List[CurLine!].Status = .cur
+                    self.tableView.reloadData()
+                    proButSelected(sender: ProBut1)//切换到进度状态1
+                    CurProcess = .first1
+                }
+            }
+        }
+        
     }
-
+    
+    
+    @IBOutlet weak var ProBut1: UIButton!
+    @IBOutlet weak var ProBut2: UIButton!
+    @IBOutlet weak var ProBut3: UIButton!
+    
+    var tempProBut:UIButton?=nil
+    
+    @IBAction func ProcessBut1(_ sender: UIButton)
+    {
+        proButSelected(sender: sender)
+        CurProcess = .first1
+    }
+    @IBAction func ProcessBut2(_ sender: UIButton)
+    {
+        proButSelected(sender: sender)
+        CurProcess = .second1
+    }
+    @IBAction func ProcessBut3(_ sender: UIButton)
+    {
+        proButSelected(sender: sender)
+        CurProcess = .third2
+    }
+    
+    func proButSelected(sender:UIButton)
+    {
+        if(tempProBut==nil)
+        {
+            sender.isSelected=true
+            tempProBut=sender
+        }
+        else if(tempProBut != nil && tempProBut == sender)
+        {
+            sender.isSelected=true
+        }
+        else if(tempProBut != nil && tempProBut != sender)
+        {
+            tempProBut?.isSelected=false
+            sender.isSelected=true
+            tempProBut=sender
+        }
+    }
 }
 

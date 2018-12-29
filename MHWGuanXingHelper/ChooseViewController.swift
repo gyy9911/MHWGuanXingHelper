@@ -26,21 +26,36 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var Jewel2:Jewel?
     var Jewel3:Jewel?
     
-    var JewelImages:[UIImage]=[UIImage(named: "S1Img")!,
-                        UIImage(named: "S2Img")!,
-                        UIImage(named: "S3Img")!
-                        ]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //设置tabbaritem字体
+        //自定义tabbaritem
         for baritem in (tabBarController?.tabBar.items)!{
-            baritem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15)], for: UIControl.State.normal)
+            baritem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black,NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20)], for: UIControl.State.normal)
+            baritem.imageInsets=UIEdgeInsets(top: 5, left: -90, bottom: -5, right: 0);
+            baritem.titlePositionAdjustment=UIOffset(horizontal: 20, vertical: -10);
+
+            //加载已有数据
+            switch baritem.tag{
+            case 1:
+                Jewel1=SelectedJewelId1>=0 ? JewelData[SelectedJewelId1]:emptyJewel
+                baritem.title=Jewel1!.cname
+                baritem.image=UIImage(named:"ImgS\(Jewel1!.slot)")
+                baritem.selectedImage=UIImage(named:"ImgS\(Jewel1!.slot)")
+            case 2:
+                Jewel2=SelectedJewelId2>=0 ? JewelData[SelectedJewelId2]:emptyJewel
+                baritem.title=Jewel2!.cname
+                baritem.image=UIImage(named:"ImgS\(Jewel2!.slot)")
+                baritem.selectedImage=UIImage(named:"ImgS\(Jewel2!.slot)")
+            case 3:
+                Jewel3=SelectedJewelId3>=0 ? JewelData[SelectedJewelId3]:emptyJewel
+                baritem.title=Jewel3!.cname
+                baritem.image=UIImage(named:"ImgS\(Jewel3!.slot)")
+                baritem.selectedImage=UIImage(named:"ImgS\(Jewel3!.slot)")
+            default:
+                fatalError("wrong tag number")
+            }
         }
-        
-        
-      //  print("view load")
         
         if(!isDataLoaded){
             InitJewelData()
@@ -56,7 +71,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         setSlot1Jewels()//默认加载1级孔数据
         reloadAllTable()
-        
+    
     }
     
     /*
@@ -68,6 +83,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         // Pass the selected object to the new view controller.
     }
     */
+    //返回列表行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView {
         case tableViewR5:
@@ -81,9 +97,8 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         default:
             return -1
         }
-        
     }
-    
+    //设置标中数据
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "ChooseJewelCell"
         if(tableView==tableViewR5){
@@ -128,34 +143,32 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
     }
     
-    
+    //选择表中数据时触发
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell=tableView.cellForRow(at: indexPath) as? ChooseJewelCell else{
             fatalError("can't get cell")
         }
-        
        // print("选中了第\(indexPath.row)个cell id=\(cell.Jewelid)")
         
         switch tabBarItem.tag {
         case 1:
             Jewel1=JewelData[cell.Jewelid]
-            tabBarItem.title=Jewel1?.cname
-            tabBarItem.image=JewelImages[(Jewel1?.slot)!-1]
-            tabBarItem.selectedImage=JewelImages[(Jewel1?.slot)!-1]
+            tabBarItem.title=Jewel1!.cname
+            tabBarItem.image=UIImage(named:"ImgS\(Jewel1!.slot)")
+            tabBarItem.selectedImage=UIImage(named:"ImgS\(Jewel1!.slot)")
             SelectedJewelId1=(Jewel1?.id)!
-            
-    
+
         case 2:
             Jewel2=JewelData[cell.Jewelid]
             tabBarItem.title=Jewel2?.cname
-            tabBarItem.image=JewelImages[(Jewel2?.slot)!-1]
-            tabBarItem.selectedImage=JewelImages[(Jewel2?.slot)!-1]
+            tabBarItem.image=UIImage(named:"ImgS\(Jewel2!.slot)")
+            tabBarItem.selectedImage=UIImage(named:"ImgS\(Jewel2!.slot)")
             SelectedJewelId2=(Jewel2?.id)!
         case 3:
             Jewel3=JewelData[cell.Jewelid]
             tabBarItem.title=Jewel3?.cname
-            tabBarItem.image=JewelImages[(Jewel3?.slot)!-1]
-            tabBarItem.selectedImage=JewelImages[(Jewel3?.slot)!-1]
+            tabBarItem.image=UIImage(named:"ImgS\(Jewel3!.slot)")
+            tabBarItem.selectedImage=UIImage(named:"ImgS\(Jewel3!.slot)")
             SelectedJewelId3=(Jewel3?.id)!
         default:
             fatalError("wrong tag number")
@@ -232,42 +245,79 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         JewelsR7=JewelsS3R7
         JewelsR8=JewelsS3R8
     }
+    @IBOutlet weak var J1S1But: UIButton!
+    @IBOutlet weak var J2S1But: UIButton!
+    @IBOutlet weak var J3S1But: UIButton!
     
+    var tempBut:UIButton?=nil
+    func buttonSelected(sender:UIButton){
+        if(tempBut==nil){
+            switch tabBarItem.tag {
+            case 1:
+                J1S1But.isSelected=false
+            case 2:
+                J2S1But.isSelected=false
+            case 3:
+                J3S1But.isSelected=false
+            default:
+                fatalError("wrong tag number")
+            }
+            sender.isSelected=true
+            tempBut=sender
+        }
+        else if(tempBut != nil && tempBut == sender){
+            sender.isSelected=true
+        }
+        else if(tempBut != nil && tempBut != sender){
+            tempBut?.isSelected=false
+            sender.isSelected=true
+            tempBut=sender
+        }
+    }
     //以下9个按钮对应三个界面上的三个镶嵌槽选择按钮
     @IBAction func J1S1Button(_ sender: UIButton) {
         setSlot1Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J1S2Button(_ sender: UIButton) {
         setSlot2Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J1S3Button(_ sender: UIButton) {
         setSlot3Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J2S1Button(_ sender: UIButton) {
         setSlot1Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J2S2Button(_ sender: UIButton) {
         setSlot2Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J2S3Button(_ sender: UIButton) {
         setSlot3Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J3S1Button(_ sender: UIButton) {
         setSlot1Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J3S2Button(_ sender: UIButton) {
         setSlot2Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     @IBAction func J3S3Button(_ sender: UIButton) {
         setSlot3Jewels()
+        buttonSelected(sender: sender)
         reloadAllTable()
     }
     

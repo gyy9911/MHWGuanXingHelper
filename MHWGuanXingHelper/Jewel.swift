@@ -29,8 +29,8 @@ class Jewel{
     }
 }
 class ListLine{     //某组炼金结果，一组三个
-    enum ProgressType{case arc,mis,not,cur} //该组当前状态：已炼金、已跳过、没到、当前结果
-    var Progress:ProgressType
+    enum StatusType{case done,skip,not,cur,next} //该组当前状态：已炼金、已跳过、没到、当前结果
+    var Status:StatusType
     var Jewel1:Jewel
     var Jewel2:Jewel
     var Jewel3:Jewel
@@ -40,7 +40,7 @@ class ListLine{     //某组炼金结果，一组三个
         self.Jewel1=Jewel1
         self.Jewel2=Jewel2
         self.Jewel3=Jewel3
-        Progress=ProgressType.not
+        Status=StatusType.not
         isHighlighted=false
     }
 }

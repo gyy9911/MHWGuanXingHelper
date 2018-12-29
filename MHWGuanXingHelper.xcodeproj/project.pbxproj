@@ -114,13 +114,13 @@
 				B31D845121B14F4000080EE7 /* ListJewelCell.swift */,
 				B33ADCFE21B023080004F55D /* ChooseViewController.swift */,
 				B31D845321B1620200080EE7 /* ChooseJewelCell.swift */,
+				B328799221B55F9800B1A0FF /* TabViewCotroller.swift */,
 				B37C0ACC21AEC4CE000AC9A3 /* Main.storyboard */,
 				B37C0ACF21AEC4D4000AC9A3 /* Assets.xcassets */,
 				B37C0AD121AEC4D5000AC9A3 /* LaunchScreen.storyboard */,
 				B37C0AD421AEC4D5000AC9A3 /* Info.plist */,
 				B33ADD0021B0260C0004F55D /* Jewel.swift */,
 				B31D844F21B12F2E00080EE7 /* JewelData.swift */,
-				B328799221B55F9800B1A0FF /* TabViewCotroller.swift */,
 			);
 			path = MHWGuanXingHelper;
 			sourceTree = "<group>";
