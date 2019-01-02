@@ -139,4 +139,4 @@ var SelectedJewelId3 = (-1)
 enum ProcessType{case first1,second1,third2}
 var CurProcess:ProcessType?
 var CurLine:Int?
-var ForeLine:Int?
+

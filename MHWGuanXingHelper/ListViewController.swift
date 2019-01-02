@@ -153,7 +153,6 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         if(CurLine! != List.count-1)//当前行不是最后一行时
         {
             List[CurLine!].Status = .done
-            ForeLine=CurLine
             CurLine=CurLine!+1
             List[CurLine!].Status = .cur
             tableView.reloadData()
@@ -164,48 +163,133 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     {
         if(CurProcess != nil)
         {
+            if(CurLine==nil)
+            {
+                alertNoLines()
+                return
+            }
             switch CurProcess!
             {
             case .first1:
-                if(CurLine! != self.List.count-1)//当前行不是最后一行时
+                if(CurLine! < self.List.count-1)//行数足够推进时
                 {
                     self.List[CurLine!].Status = .skip
-                    ForeLine=CurLine
                     CurLine=CurLine!+1
                     self.List[CurLine!].Status = .cur
                     self.tableView.reloadData()
                     proButSelected(sender: ProBut2)//切换到进度状态2
                     CurProcess = .second1
                 }
+                else
+                {alertNoLines()}
             case .second1:
-                if(CurLine! != self.List.count-1)
+                if(CurLine! < self.List.count-1)
                 {
                     self.List[CurLine!].Status = .skip
-                    ForeLine=CurLine
                     CurLine=CurLine!+1
                     self.List[CurLine!].Status = .cur
                     self.tableView.reloadData()
                     proButSelected(sender: ProBut3)//切换到进度状态3
                     CurProcess = .third2
                 }
+                else
+                {alertNoLines()}
             case .third2:
                 if(CurLine! < self.List.count-2)
                 {
                     self.List[CurLine!].Status = .skip
                     self.List[CurLine!+1].Status = .skip
-                    ForeLine=CurLine
                     CurLine=CurLine!+2
                     self.List[CurLine!].Status = .cur
                     self.tableView.reloadData()
                     proButSelected(sender: ProBut1)//切换到进度状态1
                     CurProcess = .first1
                 }
+                else
+                {alertNoLines()}
+            }
+        }
+        else
+        {
+            alertNoProcess()
+        }
+        
+    }
+    
+    @IBAction func undoBut(_ sender: UIButton) {
+        if(CurLine==0 || CurLine==nil)
+        {
+            return
+        }
+        if(self.List[CurLine!-1].Status == .done)//上一步是炼金推进的
+        {
+            List[CurLine!].Status = .not
+            CurLine=CurLine!-1
+            List[CurLine!].Status = .cur
+            tableView.reloadData()
+        }
+        else
+        {
+            if(CurProcess == nil){return}
+            switch CurProcess!
+            {
+            case .first1:
+                    self.List[CurLine!].Status = .not
+                    self.List[CurLine!-1].Status = .not
+                    CurLine=CurLine!-2
+                    self.List[CurLine!].Status = .cur
+                    self.tableView.reloadData()
+                    proButSelected(sender: ProBut3)//切换到进度状态3
+                    CurProcess = .third2
+            case .second1:
+                self.List[CurLine!].Status = .not
+                CurLine=CurLine!-1
+                self.List[CurLine!].Status = .cur
+                self.tableView.reloadData()
+                proButSelected(sender: ProBut1)//切换到进度状态1
+                CurProcess = .first1
+            case .third2:
+                self.List[CurLine!].Status = .not
+                CurLine=CurLine!-1
+                self.List[CurLine!].Status = .cur
+                self.tableView.reloadData()
+                proButSelected(sender: ProBut2)//切换到进度状态2
+                CurProcess = .second1
             }
         }
         
     }
     
+    func alertNoLines()
+    {
+        let alertController = UIAlertController(title: "", message: "无法再向前推进了", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "确定", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    func alertNoProcess()
+    {
+        let alertController = UIAlertController(title: "", message: "未确定任务进度！", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "确定", style: .default)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
+    @IBAction func ProcessChooseBut(_ sender: UIButton)
+    {
+        if(ProBut1.isEnabled==true)
+        {
+            ProBut1.isEnabled=false
+            ProBut2.isEnabled=false
+            ProBut3.isEnabled=false
+        }
+        else
+        {
+            ProBut1.isEnabled=true
+            ProBut2.isEnabled=true
+            ProBut3.isEnabled=true
+        }
+    }
     @IBOutlet weak var ProBut1: UIButton!
     @IBOutlet weak var ProBut2: UIButton!
     @IBOutlet weak var ProBut3: UIButton!

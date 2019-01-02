@@ -131,30 +131,31 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-Eb-GIi">
-                                                <rect key="frame" x="13.5" y="96" width="35" height="185"/>
+                                                <rect key="frame" x="15.5" y="96" width="31" height="185"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="av9-R1-uha">
-                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="46.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-u4-kl0">
-                                                        <rect key="frame" x="0.0" y="46.5" width="35" height="46"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g75-Af-aMb" userLabel="进度">
+                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="46.5"/>
+                                                        <state key="normal" title="进度"/>
+                                                        <connections>
+                                                            <action selector="ProcessChooseBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xe-1E-eqN"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-u4-kl0">
+                                                        <rect key="frame" x="0.0" y="46.5" width="31" height="46"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="ProcessBut1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtc-aM-Lk7"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-9k-4z6">
-                                                        <rect key="frame" x="0.0" y="92.5" width="35" height="46.5"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-9k-4z6">
+                                                        <rect key="frame" x="0.0" y="92.5" width="31" height="46.5"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="ProcessBut2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8g-cY-2ph"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGo-iw-aYc">
-                                                        <rect key="frame" x="0.0" y="139" width="35" height="46"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGo-iw-aYc">
+                                                        <rect key="frame" x="0.0" y="139" width="31" height="46"/>
                                                         <state key="normal" title="2"/>
                                                         <connections>
                                                             <action selector="ProcessBut3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="og8-iC-oEp"/>
@@ -168,6 +169,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n62-eW-7gj">
                                                         <rect key="frame" x="0.0" y="0.0" width="62" height="46.5"/>
                                                         <state key="normal" title="撤销"/>
+                                                        <connections>
+                                                            <action selector="undoBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RKH-6y-zC5"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-wA-Dzf">
                                                         <rect key="frame" x="0.0" y="46.5" width="62" height="46"/>
