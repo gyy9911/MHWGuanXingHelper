@@ -173,7 +173,6 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         default:
             fatalError("wrong tag number")
         }
-        //tabBarItem.image=JewelImages[2]
 
         cell.isSelected=false
     }
@@ -214,9 +213,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
                     fatalError("wrong rare number")
                 }
             }
-            else {
-                    fatalError("wrong slot number")
-            }
+            
         }
         isDataLoaded=true
     }

@@ -109,6 +109,9 @@ var JewelData:[Jewel]=[
     Jewel(id:95,ename:"FastCharge",cname:"短缩",slot:2,rare:8,image:nil),
     Jewel(id:96,ename:"Artillery",cname:"炮术",slot:1,rare:8,image:nil),
     Jewel(id:97,ename:"Draw",cname:"拔刀",slot:2,rare:8,image:nil),
+    Jewel(id:98,ename:"empty",cname:"一一",slot:0,rare:0,image:nil),
+    Jewel(id:99,ename:"empty",cname:"一一",slot:0,rare:0,image:nil),
+    Jewel(id:100,ename:"empty",cname:"一一",slot:0,rare:0,image:nil),
 ]
 
 var emptyJewel=Jewel(id: -1, ename: "empty", cname: "一一", slot: 0, rare: 0, image: nil)
@@ -132,9 +135,9 @@ var JewelsS3R8=[Jewel]()
 
 var isDataLoaded=false //防止数据重复加载
 
-var SelectedJewelId1 = (-1)
-var SelectedJewelId2 = (-1)
-var SelectedJewelId3 = (-1)
+var SelectedJewelId1 = 100
+var SelectedJewelId2 = 100
+var SelectedJewelId3 = 100
 
 enum ProcessType{case first1,second1,third2}
 var CurProcess:ProcessType?

@@ -15,22 +15,23 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     var List=[ListLine]()
     @IBAction func AddButton(_ sender: Any) {
         //添加新项时清空之前已选条目
-        SelectedJewelId1 = -1
-        SelectedJewelId2 = -1
-        SelectedJewelId3 = -1
+        SelectedJewelId1 = 100
+        SelectedJewelId2 = 100
+        SelectedJewelId3 = 100
     }
-    var JewelImages:[UIImage]=[UIImage(named: "ImgS1")!,
-                               UIImage(named: "ImgS2")!,
-                               UIImage(named: "ImgS3")!
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //loadSampleData()
         
         tableView.delegate = self//设置表格视图的代理为当前的视图控制器类
         tableView.dataSource = self//设置表格视图的数据源为当前的视图控制器类
+        if let savedData=loadData()
+        {
+            print("data loaded")
+            List=savedData
+            tableView.reloadData()
+        }
+        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,6 +85,7 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             {
             //edit a line
                 List[selectedIndexPath.row]=newLine
+                saveData()
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else
@@ -96,6 +98,7 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                     CurLine=0
                 }
                 List.append(newLine)
+                saveData()
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
@@ -259,6 +262,22 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
         
     }
+    private func saveData()
+    {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(List, toFile: ListLine.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("data successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save data...", log: OSLog.default, type: .error)
+        }
+    }
+    private func loadData() -> [ListLine]?
+    {
+        print("loading data")
+        
+        return NSKeyedUnarchiver.unarchiveObject(withFile: ListLine.ArchiveURL.path) as? [ListLine]
+    }
+    
     
     func alertNoLines()
     {
