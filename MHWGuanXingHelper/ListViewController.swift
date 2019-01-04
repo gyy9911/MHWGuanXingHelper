@@ -9,42 +9,67 @@
 import UIKit
 import os.log
 
-class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource
+{
     
     @IBOutlet weak var tableView: UITableView!
     var List=[ListLine]()
-    @IBAction func AddButton(_ sender: Any) {
+    @IBAction func AddButton(_ sender: Any)
+    {
         //添加新项时清空之前已选条目
         SelectedJewelId1 = 100
         SelectedJewelId2 = 100
         SelectedJewelId3 = 100
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
+
         tableView.delegate = self//设置表格视图的代理为当前的视图控制器类
         tableView.dataSource = self//设置表格视图的数据源为当前的视图控制器类
-        if let savedData=loadData()
+        if let savedData=loadData()//加载存档
         {
             print("data loaded")
             List=savedData
-            tableView.reloadData()
+            for i in 0...List.count-1
+            {
+                if List[i].Status == .cur
+                {
+                    CurLine=i
+                    break
+                }
+            }
+            if(CurProcess != nil)
+            {
+                switch CurProcess!
+                {
+                case .first1:proButSelected(sender: ProBut1)
+                case .second1:proButSelected(sender: ProBut2)
+                case .third2:proButSelected(sender: ProBut3)                    
+                }
+            }
+            
         }
         
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
         return 1
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return List.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let cellIdentifier = "ListJewelCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ListJewelCell  else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ListJewelCell
+        else
+        {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
 
@@ -68,6 +93,13 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         case .next:
             cell.ProgressImage.image=UIImage(named: "ProNext")
         }
+        switch Line.isHighlighted
+        {
+        case true:
+            cell.backgroundColor=UIColor.yellow
+        case false:
+            cell.backgroundColor=UIColor.white
+        }
         return cell
     }
     
@@ -79,18 +111,22 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             let newJewel1=SelectedJewelId1<0 ? emptyJewel:JewelData[SelectedJewelId1]
             let newJewel2=SelectedJewelId2<0 ? emptyJewel:JewelData[SelectedJewelId2]
             let newJewel3=SelectedJewelId3<0 ? emptyJewel:JewelData[SelectedJewelId3]
-            let newLine=ListLine(Jewel1: newJewel1, Jewel2: newJewel2, Jewel3: newJewel3)
             
             if let selectedIndexPath=tableView.indexPathForSelectedRow
             {
-            //edit a line
-                List[selectedIndexPath.row]=newLine
+            //编辑行
+                let editedLine=ListLine(Jewel1: newJewel1, Jewel2: newJewel2, Jewel3: newJewel3)
+                editedLine.Status=List[selectedIndexPath.row].Status
+                editedLine.isHighlighted=List[selectedIndexPath.row].isHighlighted
+                
+                List[selectedIndexPath.row]=editedLine
                 saveData()
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
             }
             else
             {
-                // Add a new line.
+                // 添加新行
+                let newLine=ListLine(Jewel1: newJewel1, Jewel2: newJewel2, Jewel3: newJewel3)
                 let newIndexPath = IndexPath(row: List.count, section: 0)
                 if(newIndexPath.row==0)
                 {//如果添加的是第一行，那这一行即为初始当前行
@@ -139,13 +175,26 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         let cellActionA = UITableViewRowAction(style: .default, title: "删除", handler:
         {_,_ in
             print("点击了删除")
+           // tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
+            self.List.remove(at: indexPath.row)
+            self.saveData()
+            tableView.reloadData()
         })
         cellActionA.backgroundColor = UIColor.red
         
         let cellActionB = UITableViewRowAction(style: .default, title: "高亮", handler:
         {_,_ in
-            tableView.cellForRow(at: indexPath)?.backgroundColor=UIColor.yellow
             print("点击了高亮at line \(indexPath.row)")
+            if self.List[indexPath.row].isHighlighted==false
+            {
+                self.List[indexPath.row].isHighlighted=true
+            }
+            else
+            {
+                self.List[indexPath.row].isHighlighted=false
+            }
+            self.saveData()
+            tableView.reloadData()
         })
         cellActionB.backgroundColor = UIColor.green
         return [cellActionB, cellActionA]
@@ -216,7 +265,7 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         {
             alertNoProcess()
         }
-        
+        self.saveData()
     }
     
     @IBAction func undoBut(_ sender: UIButton) {
@@ -260,7 +309,7 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 CurProcess = .second1
             }
         }
-        
+        self.saveData()
     }
     private func saveData()
     {

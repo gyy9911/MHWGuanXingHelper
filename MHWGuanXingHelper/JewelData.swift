@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 var JewelData:[Jewel]=[
     Jewel(id:0,ename:"Intimidator",cname:"威吓",slot:1,rare:5,image:nil),
     Jewel(id:1,ename:"Smoke",cname:"烟复",slot:1,rare:5,image:nil),
@@ -142,4 +143,3 @@ var SelectedJewelId3 = 100
 enum ProcessType{case first1,second1,third2}
 var CurProcess:ProcessType?
 var CurLine:Int?
-
