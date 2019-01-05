@@ -25,6 +25,11 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        ProBut1.setTitleColor(UIColor.black, for: UIControl.State.disabled)
+        ProBut2.setTitleColor(UIColor.black, for: UIControl.State.disabled)
+        ProBut3.setTitleColor(UIColor.black, for: UIControl.State.disabled)
+              
+ 
 
         tableView.delegate = self//设置表格视图的代理为当前的视图控制器类
         tableView.dataSource = self//设置表格视图的数据源为当前的视图控制器类
@@ -49,9 +54,7 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 case .third2:proButSelected(sender: ProBut3)                    
                 }
             }
-            
         }
-        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int
@@ -174,17 +177,24 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let cellActionA = UITableViewRowAction(style: .default, title: "删除", handler:
         {_,_ in
-            print("点击了删除")
-           // tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.left)
-            self.List.remove(at: indexPath.row)
-            self.saveData()
-            tableView.reloadData()
+            if (indexPath.row != CurLine! || (indexPath.row==CurLine! && self.List.count==1) )
+            {
+                self.List.remove(at: indexPath.row)
+                self.saveData()
+                tableView.reloadData()
+            }
+            else{
+                let alertController = UIAlertController(title: "", message: "不允许删除当前行", preferredStyle: .actionSheet)
+                let okAction = UIAlertAction(title: "确定", style: .default)
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+            
         })
         cellActionA.backgroundColor = UIColor.red
         
         let cellActionB = UITableViewRowAction(style: .default, title: "高亮", handler:
         {_,_ in
-            print("点击了高亮at line \(indexPath.row)")
             if self.List[indexPath.row].isHighlighted==false
             {
                 self.List[indexPath.row].isHighlighted=true
@@ -311,7 +321,29 @@ class ListViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         }
         self.saveData()
     }
-    private func saveData()
+    
+    @IBAction func clearBut(_ sender: UIButton) //清空过期条目
+    {
+        let alertController = UIAlertController(title: "", message: "确定清空所有已跳过或完成的条目？", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "确定", style: .default ,handler:
+        {_ in
+            while self.List[0].Status == .skip || self.List[0].Status == .done  {
+                self.List.remove(at: 0)
+            }
+            CurLine=0
+            self.saveData()
+            self.tableView.reloadData()
+        })
+        
+        let noAction = UIAlertAction(title: "取消", style: .default )
+        alertController.addAction(okAction)
+        alertController.addAction(noAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
+    private func saveData()//保存数据
     {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(List, toFile: ListLine.ArchiveURL.path)
         if isSuccessfulSave {

@@ -24,6 +24,7 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M6l-lg-2h4">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="647"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListJewelCell" rowHeight="50" id="OPu-Ox-mFX" customClass="ListJewelCell" customModule="MHWGuanXingHelper" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="303" height="50"/>
@@ -94,17 +95,16 @@
                                                                     </subviews>
                                                                 </stackView>
                                                             </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="xGT-AQ-NoL" firstAttribute="leading" secondItem="UWA-yv-EAf" secondAttribute="leading" id="2yl-nM-WDQ"/>
-                                                            </constraints>
+                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </stackView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="buS-Bf-6CL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="31" height="49.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="26" height="49.5"/>
                                                         </imageView>
                                                     </subviews>
+                                                    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="UWA-yv-EAf" firstAttribute="leading" secondItem="buS-Bf-6CL" secondAttribute="trailing" constant="5" id="9rG-kJ-agw"/>
                                                         <constraint firstAttribute="bottom" secondItem="UWA-yv-EAf" secondAttribute="bottom" id="BUQ-oX-j9e"/>
-                                                        <constraint firstItem="UWA-yv-EAf" firstAttribute="leading" secondItem="buS-Bf-6CL" secondAttribute="trailing" id="Pna-rK-DPi"/>
                                                         <constraint firstItem="UWA-yv-EAf" firstAttribute="top" secondItem="acm-qs-vuE" secondAttribute="top" id="Pwt-2x-daW"/>
                                                         <constraint firstItem="buS-Bf-6CL" firstAttribute="bottom" secondItem="UWA-yv-EAf" secondAttribute="bottom" id="YX9-7C-u1f"/>
                                                         <constraint firstAttribute="trailing" secondItem="UWA-yv-EAf" secondAttribute="trailing" id="bty-xp-SgZ"/>
@@ -112,6 +112,7 @@
                                                         <constraint firstItem="buS-Bf-6CL" firstAttribute="top" secondItem="UWA-yv-EAf" secondAttribute="top" id="vSg-fe-CUg"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="Image1" destination="a9s-Eq-tZ7" id="5KM-aq-xdr"/>
                                                     <outlet property="Image2" destination="fzh-1Q-NbF" id="cf0-FO-9v9"/>
@@ -128,40 +129,57 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="1AY-DO-deG">
                                         <rect key="frame" x="313" y="0.0" width="62" height="647"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zm6-Sq-Lwz">
-                                                <rect key="frame" x="0.0" y="0.0" width="62" height="46"/>
-                                                <state key="normal" title="添加"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zm6-Sq-Lwz">
+                                                <rect key="frame" x="0.0" y="0.0" width="62" height="49"/>
+                                                <state key="normal" title="添加">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="AddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vw6-z8-iA8"/>
                                                     <segue destination="fso-0P-ZT2" kind="show" identifier="add" id="qrR-yf-jFI"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9gf-Eb-GIi">
-                                                <rect key="frame" x="15.5" y="96" width="31" height="185"/>
+                                                <rect key="frame" x="12.5" y="99" width="37" height="190.5"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g75-Af-aMb" userLabel="进度">
-                                                        <rect key="frame" x="0.0" y="0.0" width="31" height="46.5"/>
-                                                        <state key="normal" title="进度"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g75-Af-aMb" userLabel="进度">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="48"/>
+                                                        <state key="normal">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="进度">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <font key="NSFont" size="18" name=".PingFangSC-Regular"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </state>
                                                         <connections>
                                                             <action selector="ProcessChooseBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5xe-1E-eqN"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fob-u4-kl0">
-                                                        <rect key="frame" x="0.0" y="46.5" width="31" height="46"/>
+                                                        <rect key="frame" x="0.0" y="48" width="37" height="47.5"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="ProcessBut1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtc-aM-Lk7"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPU-9k-4z6">
-                                                        <rect key="frame" x="0.0" y="92.5" width="31" height="46.5"/>
+                                                        <rect key="frame" x="0.0" y="95.5" width="37" height="47.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="1"/>
                                                         <connections>
                                                             <action selector="ProcessBut2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B8g-cY-2ph"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGo-iw-aYc">
-                                                        <rect key="frame" x="0.0" y="139" width="31" height="46"/>
+                                                        <rect key="frame" x="0.0" y="143" width="37" height="47.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <state key="normal" title="2"/>
                                                         <connections>
                                                             <action selector="ProcessBut3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="og8-iC-oEp"/>
@@ -170,24 +188,30 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="RhQ-63-uGj">
-                                                <rect key="frame" x="0.0" y="331" width="62" height="138.5"/>
+                                                <rect key="frame" x="0.0" y="339.5" width="62" height="207.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n62-eW-7gj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="46.5"/>
-                                                        <state key="normal" title="撤销"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="62" height="69.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <state key="normal" title="撤销">
+                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="undoBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RKH-6y-zC5"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-wA-Dzf">
-                                                        <rect key="frame" x="0.0" y="46.5" width="62" height="46"/>
-                                                        <state key="normal" title="炼金推进"/>
+                                                        <rect key="frame" x="0.0" y="69.5" width="62" height="69"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="炼金推进">
+                                                            <color key="titleColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="AlchemyBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gof-PJ-yVi"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lqv-vx-auz">
-                                                        <rect key="frame" x="0.0" y="92.5" width="62" height="46"/>
+                                                        <rect key="frame" x="0.0" y="138.5" width="62" height="69"/>
                                                         <state key="normal" title="任务推进"/>
                                                         <connections>
                                                             <action selector="MissionBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QND-vJ-ceJ"/>
@@ -196,8 +220,16 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7q-ei-FrJ">
-                                                <rect key="frame" x="8" y="519.5" width="46" height="127.5"/>
-                                                <state key="normal" title="Button"/>
+                                                <rect key="frame" x="0.0" y="597" width="62" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="VUh-L9-kT0"/>
+                                                </constraints>
+                                                <state key="normal" title="清空过期">
+                                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="clearBut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iKj-JH-VjH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -215,7 +247,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cXr-1b-0kT" secondAttribute="trailing" id="1cu-Bb-d3H"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cXr-1b-0kT" secondAttribute="bottom" id="Xda-Lg-rvz"/>
@@ -243,12 +275,12 @@
             <objects>
                 <tabBarController id="e62-QH-JsP" customClass="TabViewCotroller" customModule="MHWGuanXingHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="82D-PV-7yh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OJY-AT-fiv">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="OJY-AT-fiv">
                             <connections>
                                 <action selector="cancel:" destination="e62-QH-JsP" id="g2J-MM-4gC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iua-PT-9Tn">
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="iua-PT-9Tn">
                             <connections>
                                 <segue destination="1UE-Ta-hUc" kind="unwind" unwindAction="unwindToListWithSender:" id="Teu-2l-IPg"/>
                             </connections>
@@ -316,18 +348,22 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIe-Rb-ApH">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare5"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QR8-Sg-U7c">
                                                 <rect key="frame" x="94" y="0.0" width="93.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare6"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIA-FV-XEh">
                                                 <rect key="frame" x="187.5" y="0.0" width="94" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare7"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raY-TV-4fT">
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare8"/>
                                             </button>
                                         </subviews>
@@ -569,18 +605,22 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9h-kV-XTS">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare5"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKK-Iw-taZ">
                                                 <rect key="frame" x="94" y="0.0" width="93.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare6"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JN-WC-mhW">
                                                 <rect key="frame" x="187.5" y="0.0" width="94" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare7"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9I-4s-blh">
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare8"/>
                                             </button>
                                         </subviews>
@@ -804,18 +844,22 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tda-yh-2uq">
                                                 <rect key="frame" x="0.0" y="0.0" width="94" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare5"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8k-eH-eTl">
                                                 <rect key="frame" x="94" y="0.0" width="93.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare6"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsg-mc-ufo">
                                                 <rect key="frame" x="187.5" y="0.0" width="94" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare7"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="itx-9b-4ky">
                                                 <rect key="frame" x="281.5" y="0.0" width="93.5" height="35"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Rare8"/>
                                             </button>
                                         </subviews>

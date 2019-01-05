@@ -175,6 +175,7 @@ class ChooseViewController: UIViewController,UITableViewDelegate, UITableViewDat
         }
 
         cell.isSelected=false
+        
     }
 
     
